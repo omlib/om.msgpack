@@ -189,15 +189,16 @@ class Encoder {
 		for (k in d.keys())
 			length++;
 		writeMapLength(length);
-		for (k in d.keys()) {
+		for (k => v in d) {
 			encodeObject(k);
-			encodeObject(d.get(k));
+			encodeObject(v);
 		}
 	}
 
 	inline function writeObject(d:Dynamic) {
 		var f = d.fields();
-		writeMapLength(Lambda.count(f));
+		// writeMapLength(Lambda.count(f));
+		writeMapLength(f.length);
 		for (k in f) {
 			encodeObject(k);
 			encodeObject(d.field(k));
