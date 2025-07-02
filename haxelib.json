@@ -1,0 +1,17 @@
+{
+  "name": "om.msgpack",
+  "version": "0.0.0",
+  "description": "msgpack",
+  "tags": [
+    "om",
+    "msgpack"
+  ],
+  "url": "https://github.com/omlib/om.msgpack",
+  "license": "Public",
+  "contributors": [
+    "tong"
+  ],
+  "releasenote": "See CHANGELOG.md",
+  "classPath": "src/",
+  "dependencies": {}
+}

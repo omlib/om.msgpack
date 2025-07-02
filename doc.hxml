@@ -1,0 +1,42 @@
+--no-output
+-lib om.msgpack
+om.Msgpack
+-D xml-gen
+--each
+
+--next
+-cpp x
+-xml doc/cpp.xml
+
+--next
+--jvm x
+-xml doc/jvm.xml
+
+--next
+-hl x
+-xml doc/hl.xml
+
+--next
+-js x
+-xml doc/js.xml
+
+--next
+-js x
+-xml doc/node.xml
+-lib hxnodejs
+
+--next
+-lua x
+-xml doc/lua.xml
+
+--next
+-neko x
+-xml doc/neko.xml
+
+--next
+-php x
+-xml doc/php.xml
+
+--next
+-python x
+-xml doc/python.xml
