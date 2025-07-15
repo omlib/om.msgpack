@@ -1,0 +1,29 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        haxe:
+          - 4.3.7
+          - latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install haxe ${{ matrix.haxe }}
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: ${{ matrix.haxe }}
+      - name: Setup haxe
+        run: |
+          haxelib dev om.msgpack .
+          haxelib install utest
+      - name: Run unit tests
+        run: haxe test.hxml
+      - name: Build haxedocs
+        run: haxe doc.hxml
