@@ -22,6 +22,8 @@ jobs:
       - name: Setup haxe
         run: |
           haxelib dev om.msgpack .
+          haxelib install hxcpp
+          haxelib install hxnodejs
           haxelib install utest
       - name: Run unit tests
         run: haxe test.hxml

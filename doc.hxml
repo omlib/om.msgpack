@@ -8,9 +8,9 @@ om.Msgpack
 -cpp x
 -xml doc/cpp.xml
 
---next
---jvm x
--xml doc/jvm.xml
+#--next
+#--jvm x
+#-xml doc/jvm.xml
 
 --next
 -hl x
