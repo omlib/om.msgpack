@@ -1,0 +1,6 @@
+-cp test
+-lib om.msgpack
+-lib utest
+-dce no
+-D no-deprecation-warnings
+-x Unit
