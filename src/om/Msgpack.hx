@@ -9,10 +9,10 @@ class Msgpack {
 	}
 
 	public static inline function decode(bytes:Bytes, ?option:DecodeOption):Dynamic {
-		return new om.msgpack.Decoder().decode(bytes, option);
+		return new om.msgpack.Decoder(option).decode(bytes);
 	}
 
 	public static inline function decodeMap(bytes:Bytes):Map<String, Dynamic> {
-		return new om.msgpack.Decoder().decode(bytes, AsMap);
+		return new om.msgpack.Decoder(AsMap).decode(bytes);
 	}
 }
