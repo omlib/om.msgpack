@@ -130,14 +130,12 @@ class Decoder {
 		return null;
 	}
 
-	function readInt64(i:BytesInput):Int64 {
-		var high = i.readInt32();
-		var low = i.readInt32();
-		return Int64.make(high, low);
+	inline function readInt64(i:BytesInput):Int64 {
+		return Int64.make(i.readInt32(), i.readInt32());
 	}
 
-	function readArray(i:BytesInput, length:Int) {
-		return [for (x in 0...length) decodeInput(i)];
+	inline function readArray(i:BytesInput, length:Int):Array<Dynamic> {
+		return [for (_ in 0...length) decodeInput(i)];
 	}
 
 	function readMap(i:BytesInput, length:Int):Any {
@@ -170,10 +168,10 @@ class Decoder {
 							switch Type.typeof(p.k) {
 								case TInt:
 								default:
-									throw "Error: Mixed key type when decoding IntMap";
+									throw "Error: mixed key type when decoding IntMap";
 							}
 							if (out.exists(p.k))
-								throw 'Error: Duplicate keys found => ${p.k}';
+								throw 'Error: duplicate keys found => ${p.k}';
 							out.set(p.k, p.v);
 						}
 						return out;
@@ -183,17 +181,16 @@ class Decoder {
 							switch Type.typeof(p.k) {
 								case TClass(c) if (Type.getClassName(c) == "String"):
 								default:
-									throw "Error: Mixed key type when decoding StringMap";
+									throw "Error: mixed key type when decoding StringMap";
 							}
 							if (out.exists(p.k))
-								throw 'Error: Duplicate keys found => ${p.k}';
+								throw 'Error: duplicate keys found => ${p.k}';
 							out.set(p.k, p.v);
 						}
 						return out;
 					default:
-						throw "Error: Unsupported key Type";
+						throw "Error: unsupported key type";
 				}
 		}
-		// throw "Should not get here";
 	}
 }

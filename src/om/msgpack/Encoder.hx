@@ -34,7 +34,7 @@ class Encoder {
 			case TFloat:
 				writeFloat(d);
 			case TClass(c):
-				switch (Type.getClassName(c)) {
+				switch Type.getClassName(c) {
 					case "haxe._Int64.___Int64": writeInt64(d);
 					case "haxe.io.Bytes": writeBinary(d);
 					case "String": writeString(d);
@@ -46,11 +46,11 @@ class Encoder {
 			case TObject:
 				writeObject(d);
 			case TEnum(e):
-				throw "Error: Enum not supported";
+				throw "Error: enum not supported";
 			case TFunction:
-				throw "Error: Function not supported";
+				throw "Error: function not supported";
 			case TUnknown:
-				throw "Error: Unknown Data Type";
+				throw "Error: Unknown data type";
 		}
 	}
 
